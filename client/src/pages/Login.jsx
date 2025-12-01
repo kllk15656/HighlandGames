@@ -34,7 +34,7 @@ export default function Login() {
   };
 
   return (
-    <section className="max-w-md mx-auto bg-white p-4 rounded shadow">
+    <section className="max-w-md mx-auto bg-primary p-4 rounded shadow">
       <h1 className="text-xl font-bold mb-3">Login</h1>
       <form onSubmit={onSubmit} className="space-y-3">
         <input
@@ -52,13 +52,13 @@ export default function Login() {
           type="password"
           className="w-full p-3 border rounded"
         />
-        <button className="w-full bg-blue-600 text-white p-3 rounded">Login</button>
+        <button className="w-full bg-gold text-black p-3 rounded">Login</button>
       </form>
-      <p className="text-center mt-4 text-sm">
+      <p className="text-center text-white mt-4 text-sm">
         Don’t have an account?
         <Link to="/register" className="text-blue-600 font-semibold ml-1">Register here</Link>
       </p>
-      <p className="mt-3 text-sm text-gray-600">{msg}</p>
+      <p className="mt-3 text-sm text-white">{msg}</p>
     </section>
   );
 }

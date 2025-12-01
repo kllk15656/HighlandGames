@@ -16,7 +16,7 @@ export default function Home() {
         {/* ------------------------------------------------ */}
         {/*     PHOTO / INTRO SECTION                        */}
         {/* ------------------------------------------------ */}
-        <section className="bg-white p-6 rounded-xl shadow-lg flex flex-col md:flex-row items-center gap-6 bg-primary/90">
+        <section className=" p-6 rounded-xl shadow-lg flex flex-col md:flex-row items-center gap-6 bg-primary">
 
           {/* Photo on the left */}
           <div className="w-full md:w-1/2 ">
@@ -41,14 +41,14 @@ export default function Home() {
             <div className="mt-4 flex gap-4 justify-center md:justify-start">
               <a
                 href="/tickets"
-                className="bg-accent-yellow text-black px-4 py-2 rounded-lg hover:bg-green-700"
+                className="bg-accent-yellow text-black px-4 py-2 rounded-lg hover:bg-accent-red"
               >
                 Get Tickets
               </a>
 
               <a
                 href="/events"
-                className="bg-accent-yellow text-black px-4 py-2 rounded-lg hover:bg-green-700"
+                className="bg-accent-yellow text-black px-4 py-2 rounded-lg hover:bg-accent-red"
               >
                 Join Event Today
               </a>
@@ -62,12 +62,12 @@ export default function Home() {
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
           {/* Calendar box */}
-          <div className="bg-white rounded-xl shadow-lg p-6 bg-primary/90">
+          <div className=" rounded-xl shadow-lg p-6 bg-primary">
             <CalendarWidget />
           </div>
 
           {/* Location / Map box */}
-          <div className=" rounded-xl shadow-lg p-6 bg-secondary/90">
+          <div className=" rounded-xl shadow-lg p-6 bg-primary">
             <h2 className="text-xl text-cream font-bold text-accent text-center">
               Event Location
             </h2>

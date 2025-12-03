@@ -5,7 +5,7 @@ import CalendarWidget from "../components/CalendarWidget";
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen bg-gold/30">
+    <div className="w-full min-h-screen bg-gold/5">
       {/* Header + Navigation */}
       <Header />
       <Navbar />
@@ -19,11 +19,11 @@ export default function Home() {
         <section className=" p-6 rounded-xl shadow-lg flex flex-col md:flex-row items-center gap-6 bg-primary">
 
           {/* Photo on the left */}
-          <div className="w-full md:w-1/2 ">
+          <div className="w-full md:w-1/2 bg-gold">
             <img
               src="/image1.png"
               alt="Highland Games"
-              className="rounded-lg object-cover w-full h-48 md:h-64"
+              className="rounded-lg object-cover w-full h-48 md:h-64 "
             />
           </div>
 
@@ -93,7 +93,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full bg-primary-light text-white text-center py-4 mt-10">
+      <footer className="w-full bg-primary-light text-white text-center  shadow-md fixed bottom-0 left-0 z-50">
         © {new Date().getFullYear()} Paisley's Highland Games
       </footer>
     </div>

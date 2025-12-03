@@ -13,7 +13,7 @@ export default function Leaderboard() {
   ];
 
   return (
-    <div className="w-full min-h-screen bg-primary/10">
+    <div className="w-full min-h-screen bg-gold/5">
       {/* Header + Navbar */}
       <Header />
       <Navbar />
@@ -23,10 +23,10 @@ export default function Leaderboard() {
           Leaderboard
         </h1>
 
-        <div className="bg-white p-6 rounded-xl shadow-lg overflow-x-auto">
+        <div className="bg-primary-light p-6 rounded-xl shadow-lg overflow-x-auto shadow-lg space-y-5">
           <table className="w-full text-left min-w-[400px]">
             <thead>
-              <tr className="text-secondary text-lg border-b-2 border-gray-200">
+              <tr className="text-gold text-lg border-b-2 border-gray-200">
                 <th className="py-2">Rank</th>
                 <th className="py-2">Name</th>
                 <th className="py-2">Score</th>
@@ -46,9 +46,9 @@ export default function Leaderboard() {
                       : ""
                   }`}
                 >
-                  <td className="py-3 font-bold">{i + 1}</td>
-                  <td className="py-3">{person.name}</td>
-                  <td className="py-3 font-semibold">{person.score}</td>
+                  <td className="py-3 font-bold text-black">{i + 1}</td>
+                  <td className="py-3  font-bold text-black">{person.name}</td>
+                  <td className="py-3 font-bold  text-black">{person.score}</td>
                 </tr>
               ))}
             </tbody>
@@ -56,9 +56,9 @@ export default function Leaderboard() {
         </div>
 
         {/* Information Box */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mt-10 text-center">
-          <h2 className="text-xl font-bold text-accent">About the Rankings</h2>
-          <p className="text-gray-700 mt-3">
+        <div className="bg-primary rounded-xl shadow-lg p-6 mt-10 text-center shadow-lg space-y-5">
+          <h2 className="text-xl font-bold text-gold">About the Rankings</h2>
+          <p className="text-cream">
             Scores are calculated based on overall performance in all Highland
             Games events, including caber toss, hammer throw, and stone put.
           </p>
@@ -66,7 +66,7 @@ export default function Leaderboard() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full bg-secondary text-white text-center py-4 mt-10">
+      <footer className="w-full bg-primary-light text-white text-center  shadow-md fixed bottom-0 left-0 z-50">
         © {new Date().getFullYear()} Paisley's Highland Games
       </footer>
     </div>

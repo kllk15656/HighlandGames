@@ -20,35 +20,36 @@ export default function EventSignUp() {
   // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    // later send to backend: fetch("/api/signup", { method: "POST", body: JSON.stringify(formData) })
     console.log("Form submitted:", formData);
     setSubmitted(true);
   };
 
   return (
-    <div className="w-full min-h-screen bg-primary/10">
-      {/* Header + Nav */}
+    <div className="w-full min-h-screen bg-gold/5">
+      {/* Header + Navbar */}
       <Header />
       <Navbar />
 
-      <main className="max-w-xl mx-auto px-4 py-10">
-        <h1 className="text-3xl font-bold text-accent text-center mb-8">
+      {/* Main Content */}
+      <main className="max-w-xl mx-auto px-4 bg-primary-light rounded-xl shadow-lg">
+        {/* Heading with top margin to clear fixed Navbar */}
+        <h1 className="text-3xl font-bold text-white text-center mt-24 mb-8">
           Event Sign-Up
         </h1>
 
         {/* Success Message */}
         {submitted ? (
-          <div className="bg-green-100 border border-green-300 text-green-800 p-4 rounded-xl shadow">
+          <div className="bg-green-100 border border-green-300 text-green-800 p-4 rounded-xl shadow mb-10">
             🎉 <b>Thank you!</b> Your sign-up has been received.
           </div>
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="bg-white p-6 rounded-xl shadow-lg space-y-5"
+            className="bg-primary-light p-6 rounded-xl shadow-lg space-y-5"
           >
-            {/* Name */}
+            {/* Full Name */}
             <div>
-              <label className="block font-semibold mb-1">Full Name</label>
+              <label className="block text-white font-semibold mb-1">Full Name</label>
               <input
                 type="text"
                 name="name"
@@ -61,7 +62,7 @@ export default function EventSignUp() {
 
             {/* Email */}
             <div>
-              <label className="block font-semibold mb-1">Email Address</label>
+              <label className="block text-white font-semibold mb-1">Email Address</label>
               <input
                 type="email"
                 name="email"
@@ -74,7 +75,7 @@ export default function EventSignUp() {
 
             {/* Age */}
             <div>
-              <label className="block font-semibold mb-1">Age</label>
+              <label className="block text-white font-semibold mb-1">Age</label>
               <input
                 type="number"
                 name="age"
@@ -89,7 +90,7 @@ export default function EventSignUp() {
 
             {/* Event Selection */}
             <div>
-              <label className="block font-semibold mb-1">Select Event</label>
+              <label className="block text-white font-semibold mb-1">Select Event</label>
               <select
                 name="event"
                 required
@@ -107,10 +108,10 @@ export default function EventSignUp() {
               </select>
             </div>
 
-            {/* Submit */}
+            {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-3 bg-accent text-white font-semibold rounded-lg hover:bg-accent/80 transition"
+              className="w-full py-3 bg-gold text-white font-semibold rounded-lg hover:bg-accent-red transition"
             >
               Submit Registration
             </button>
@@ -119,7 +120,7 @@ export default function EventSignUp() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full bg-secondary text-white text-center py-4 mt-10">
+      <footer className="w-full bg-primary-light text-white text-center  shadow-md fixed bottom-0 left-0 z-50">
         © {new Date().getFullYear()} Paisley's Highland Games
       </footer>
     </div>

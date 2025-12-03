@@ -36,7 +36,7 @@ export default function Login() {
   };
 
   return (
-    <section className="max-w-md mx-auto bg-primary p-6 rounded-xl shadow-md text-white">
+    <section className="max-w-md mx-auto bg-primary p-6 pt-80 rounded-xl shadow-md text-white">
       <h1 className="text-2xl font-bold mb-4 text-center">Login</h1>
 
       <form onSubmit={onSubmit} className="space-y-3">

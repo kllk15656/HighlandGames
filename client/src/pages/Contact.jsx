@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 
 export default function Contact() {
   return (
-    <div className="w-full min-h-screen bg-gold/20">
+    <div className="w-full min-h-screen bg-gold/5">
       {/* Header + Navigation */}
       <Header />
       <Navbar />
@@ -14,10 +14,10 @@ export default function Contact() {
         {/* ------------------------ */}
         {/* Contact Title */}
         {/* ------------------------ */}
-        <h1 className="text-3xl font-bold text-center text-primary">
+        <h1 className="text-3xl font-bold text-center text-black">
           Contact Us
         </h1>
-        <p className="text-center text-gray-700 max-w-2xl mx-auto">
+        <p className="text-center text-black max-w-2xl mx-auto">
           Have questions about the event, tickets, or activities?  
           Send us a message and we’ll get back to you as soon as possible.
         </p>
@@ -25,11 +25,11 @@ export default function Contact() {
         {/* ------------------------ */}
         {/* Contact Form */}
         {/* ------------------------ */}
-        <section className="bg-white p-6 rounded-xl shadow-lg">
+        <section className="bg-primary-light p-6 rounded-xl shadow-lg">
           <form className="space-y-4">
             {/* Name */}
             <div>
-              <label className="block text-primary font-semibold mb-1">Name</label>
+              <label className="block text-white font-semibold mb-1">Name</label>
               <input
                 type="text"
                 placeholder="Your Name"
@@ -39,7 +39,7 @@ export default function Contact() {
 
             {/* Email */}
             <div>
-              <label className="block text-primary font-semibold mb-1">Email</label>
+              <label className="block text-white font-semibold mb-1">Email</label>
               <input
                 type="email"
                 placeholder="you@example.com"
@@ -49,7 +49,7 @@ export default function Contact() {
 
             {/* Message */}
             <div>
-              <label className="block text-primary font-semibold mb-1">Message</label>
+              <label className="block text-white font-semibold mb-1">Message</label>
               <textarea
                 placeholder="Write your message here..."
                 rows="5"
@@ -59,7 +59,7 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="w-full bg-primary text-white py-2 mt-4 rounded-lg hover:bg-primary/80"
+              className="w-full bg-gold text-white py-2 mt-4 rounded-lg hover:bg-primary/80"
             >
               Send Message
             </button>
@@ -71,7 +71,7 @@ export default function Contact() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full bg-primary-light text-white text-center py-4 mt-10">
+      <footer className="w-full bg-primary-light text-white text-center  shadow-md fixed bottom-0 left-0 z-50">
         © {new Date().getFullYear()} Paisley's Highland Games
       </footer>
     </div>

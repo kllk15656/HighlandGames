@@ -1,8 +1,7 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+const { defineConfig } = require("vite");
+const react = require("@vitejs/plugin-react");
 
-export default defineConfig({
-  base: "/",          // 👈 for Render (NOT /HighlandGames/)
+module.exports = defineConfig({
+  base: "/",
   plugins: [react()],
 });
-

@@ -18,7 +18,9 @@ export default function Register() {
     setMsg("Registering...");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", form);
+      const res = await axios.post( "https://highlandgames.onrender.com/api/auth/register",
+  form
+);
       setMsg("🎉 Registered successfully! Redirecting...");
       setTimeout(() => navigate("/login"), 1200);
     } catch (err) {

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -8,43 +10,64 @@ export default function Login() {
     password: "",
   });
 
+  const [msg, setMsg] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
-  // Handle input change
+  // Handle each input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
-  const handleSubmit = (e) => {
+  // Submit login form to backend
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login submitted:", formData);
-    setSubmitted(true);
+    setMsg("Logging in...");
+
+    try {
+      const res = await axios.post(
+        "https://highlandgames.onrender.com/api/auth/login",
+        formData
+      );
+
+      console.log("Login success:", res.data);
+
+      // Save token (optional)
+      localStorage.setItem("token", res.data.token);
+
+      setSubmitted(true);
+      setMsg("Login successful! Redirecting...");
+
+      // redirect after 1 sec
+      setTimeout(() => navigate("/profile"), 1200);
+
+    } catch (err) {
+      console.error("Login error:", err.response?.data);
+      setMsg(err.response?.data?.error || "Login failed");
+    }
   };
 
   return (
     <div className="w-full min-h-screen bg-gold/5">
-      {/* Header + Navigation */}
       <Header />
       <Navbar />
 
-      {/* Main Login Card */}
       <main className="max-w-xl mx-auto px-4 bg-primary-light rounded-xl shadow-lg">
         <h1 className="text-3xl font-bold text-white text-center mt-24 mb-8">
           Login
         </h1>
 
-        {/* Success Message */}
-        {submitted ? (
-          <div className="bg-green-100 border border-green-300 text-green-800 p-4 rounded-xl shadow mb-10">
-            ✅ <b>Login successful!</b> Redirecting to your profile…
+        {msg && (
+          <div className="bg-blue-100 border border-blue-300 text-blue-800 p-3 rounded-xl text-center mb-4">
+            {msg}
           </div>
-        ) : (
+        )}
+
+        {!submitted && (
           <form
             onSubmit={handleSubmit}
             className="bg-primary-light p-6 rounded-xl shadow-lg space-y-5"
           >
-            {/* Email */}
             <div>
               <label className="block text-white font-semibold mb-1">Email Address</label>
               <input
@@ -57,7 +80,6 @@ export default function Login() {
               />
             </div>
 
-            {/* Password */}
             <div>
               <label className="block text-white font-semibold mb-1">Password</label>
               <input
@@ -70,7 +92,6 @@ export default function Login() {
               />
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               className="w-full py-3 bg-gold text-white font-semibold rounded-lg hover:bg-accent-red transition"
@@ -78,10 +99,12 @@ export default function Login() {
               Login
             </button>
 
-            {/* Register Link */}
             <p className="text-white text-center mt-3">
-              Don't have an account?{" "}
-              <a href="/register" className="text-gold underline hover:text-accent-yellow">
+              Don't have an account?
+              <a
+                href="/register"
+                className="text-gold underline ml-1 hover:text-accent-yellow"
+              >
                 Register here
               </a>
             </p>
@@ -89,7 +112,6 @@ export default function Login() {
         )}
       </main>
 
-      {/* Footer */}
       <footer className="w-full bg-primary-light text-white text-center shadow-md fixed bottom-0 left-0 z-50">
         © {new Date().getFullYear()} Paisley's Highland Games
       </footer>

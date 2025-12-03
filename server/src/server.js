@@ -1,4 +1,3 @@
-// src/server.js
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -11,15 +10,24 @@ const authRoutes = require('./routes/auth');
 
 const app = express();
 
-// CORS for frontend port 5173
-app.use(cors({
-  origin: 'http://localhost:5173', // frontend URL
-  credentials: true
-}));
+// ==========================
+//      CORS CONFIG HERE
+// ==========================
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://kllk15656.github.io",
+      "https://kllk15656.github.io/HighlandGames",
+      "https://highlandgames.onrender.com"
+    ],
+    credentials: true
+  })
+);
 
 app.use(express.json());
 
-// Mount API routes
+// API Routes
 app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 5000;

@@ -1,67 +1,118 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import Header from "../components/Header";
+import Navbar from "../components/Navbar";
 
 export default function Register() {
-  const [form, setForm] = useState({ username: '', email: '', password: '' });
-  const [msg, setMsg] = useState('');
+  const [form, setForm] = useState({ username: "", email: "", password: "" });
+  const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
-  const onChange = e => {
+  const onChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    console.log('Form updated:', { ...form, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    setMsg('Registering...');
-    console.log('Submitting form:', form);
+    setMsg("Registering...");
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', form);
-      console.log('Register response:', res.data);
-      setMsg('Registered successfully! Redirecting to login...');
-      setTimeout(() => navigate('/login'), 1000);
+      const res = await axios.post("http://localhost:5000/api/auth/register", form);
+      setMsg("🎉 Registered successfully! Redirecting...");
+      setTimeout(() => navigate("/login"), 1200);
     } catch (err) {
-      console.error('Register error response:', err.response || err);
-      setMsg(err.response?.data?.error || 'Registration failed');
+      setMsg(err.response?.data?.error || "Registration failed");
     }
   };
 
   return (
-    <section className="max-w-md mx-auto bg-white p-4 rounded shadow">
-      <h1 className="text-xl font-bold mb-3">Register</h1>
-      <form onSubmit={onSubmit} className="space-y-3">
-        <input
-          name="username"
-          value={form.username}
-          onChange={onChange}
-          placeholder="Username"
-          className="w-full p-3 border rounded"
-        />
-        <input
-          name="email"
-          value={form.email}
-          onChange={onChange}
-          placeholder="Email"
-          type="email"
-          className="w-full p-3 border rounded"
-        />
-        <input
-          name="password"
-          value={form.password}
-          onChange={onChange}
-          placeholder="Password"
-          type="password"
-          className="w-full p-3 border rounded"
-        />
-        <button className="w-full bg-blue-600 text-white p-3 rounded">Register</button>
-      </form>
-      <p className="text-center mt-4 text-sm">
-        Already have an account?
-        <Link to="/login" className="text-blue-600 font-semibold ml-1">Login here</Link>
-      </p>
-      <p className="mt-3 text-sm text-gray-600">{msg}</p>
-    </section>
+    <div className="w-full min-h-screen bg-gold/5">
+      {/* Header + Navigation */}
+      <Header />
+      <Navbar />
+
+      {/* Main Content */}
+      <main className="max-w-xl mx-auto px-4 bg-primary-light rounded-xl shadow-lg">
+        <h1 className="text-3xl font-bold text-white text-center mt-24 mb-8">
+          Create an Account
+        </h1>
+
+        {/* Response message */}
+        {msg && (
+          <div className="bg-blue-100 border border-blue-300 text-blue-800 p-3 rounded-xl text-center mb-4">
+            {msg}
+          </div>
+        )}
+
+        {/* Register Form */}
+        <form
+          onSubmit={onSubmit}
+          className="bg-primary-light p-6 rounded-xl shadow-lg space-y-5"
+        >
+          {/* Username */}
+          <div>
+            <label className="block text-white font-semibold mb-1">Username</label>
+            <input
+              name="username"
+              value={form.username}
+              onChange={onChange}
+              placeholder="Enter username"
+              required
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-accent"
+            />
+          </div>
+
+          {/* Email */}
+          <div>
+            <label className="block text-white font-semibold mb-1">Email Address</label>
+            <input
+              name="email"
+              type="email"
+              value={form.email}
+              onChange={onChange}
+              placeholder="example@email.com"
+              required
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-accent"
+            />
+          </div>
+
+          {/* Password */}
+          <div>
+            <label className="block text-white font-semibold mb-1">Password</label>
+            <input
+              name="password"
+              type="password"
+              value={form.password}
+              onChange={onChange}
+              placeholder="Enter a secure password"
+              required
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-accent"
+            />
+          </div>
+
+          {/* Button */}
+          <button
+            type="submit"
+            className="w-full py-3 bg-gold text-white font-semibold rounded-lg hover:bg-accent-red transition"
+          >
+            Register
+          </button>
+
+          {/* Login link */}
+          <p className="text-white text-center mt-3">
+            Already have an account?
+            <Link to="/login" className="text-gold underline ml-1 hover:text-accent-yellow">
+              Log in
+            </Link>
+          </p>
+        </form>
+      </main>
+
+      {/* Footer */}
+      <footer className="w-full bg-primary-light text-white text-center shadow-md fixed bottom-0 left-0 z-50">
+        © {new Date().getFullYear()} Paisley's Highland Games
+      </footer>
+    </div>
   );
 }

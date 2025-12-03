@@ -1,75 +1,98 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import Header from "../components/Header";
+import Navbar from "../components/Navbar";
 
 export default function Login() {
-  const [form, setForm] = useState({ username: '', password: '' });
-  const [msg, setMsg] = useState('');
-  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-  const onChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-    console.log("Form updated:", { ...form, [e.target.name]: e.target.value });
+  const [submitted, setSubmitted] = useState(false);
+
+  // Handle input change
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async (e) => {
+  // Handle form submission
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setMsg("Logging in...");
-    console.log("Submitting login form:", form);
-
-    try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", form);
-      console.log("Login response:", res.data);
-
-      // Save token (optional but recommended)
-      localStorage.setItem("token", res.data.token);
-
-      setMsg("Login successful! Redirecting...");
-
-      // Redirect to profile page
-      setTimeout(() => navigate("/profile"), 1000);
-
-    } catch (err) {
-      console.error("Login error:", err.response || err);
-      setMsg(err.response?.data?.error || "Login failed");
-    }
+    console.log("Login submitted:", formData);
+    setSubmitted(true);
   };
 
   return (
-    <section className="max-w-md mx-auto bg-primary p-6 pt-80 rounded-xl shadow-md text-white">
-      <h1 className="text-2xl font-bold mb-4 text-center">Login</h1>
+    <div className="w-full min-h-screen bg-gold/5">
+      {/* Header + Navigation */}
+      <Header />
+      <Navbar />
 
-      <form onSubmit={onSubmit} className="space-y-3">
-        <input
-          name="username"
-          value={form.username}
-          onChange={onChange}
-          placeholder="Username"
-          className="w-full p-3 rounded text-black"
-        />
-
-        <input
-          name="password"
-          value={form.password}
-          onChange={onChange}
-          placeholder="Password"
-          type="password"
-          className="w-full p-3 rounded text-black"
-        />
-
-        <button className="w-full bg-gold text-black p-3 rounded font-semibold">
+      {/* Main Login Card */}
+      <main className="max-w-xl mx-auto px-4 bg-primary-light rounded-xl shadow-lg">
+        <h1 className="text-3xl font-bold text-white text-center mt-24 mb-8">
           Login
-        </button>
-      </form>
+        </h1>
 
-      <p className="text-center mt-4 text-sm">
-        Don’t have an account?
-        <Link to="/register" className="text-blue-300 font-semibold ml-1">
-          Register here
-        </Link>
-      </p>
+        {/* Success Message */}
+        {submitted ? (
+          <div className="bg-green-100 border border-green-300 text-green-800 p-4 rounded-xl shadow mb-10">
+            ✅ <b>Login successful!</b> Redirecting to your profile…
+          </div>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            className="bg-primary-light p-6 rounded-xl shadow-lg space-y-5"
+          >
+            {/* Email */}
+            <div>
+              <label className="block text-white font-semibold mb-1">Email Address</label>
+              <input
+                type="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-accent"
+              />
+            </div>
 
-      <p className="mt-3 text-sm text-center">{msg}</p>
-    </section>
+            {/* Password */}
+            <div>
+              <label className="block text-white font-semibold mb-1">Password</label>
+              <input
+                type="password"
+                name="password"
+                required
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-accent"
+              />
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full py-3 bg-gold text-white font-semibold rounded-lg hover:bg-accent-red transition"
+            >
+              Login
+            </button>
+
+            {/* Register Link */}
+            <p className="text-white text-center mt-3">
+              Don't have an account?{" "}
+              <a href="/register" className="text-gold underline hover:text-accent-yellow">
+                Register here
+              </a>
+            </p>
+          </form>
+        )}
+      </main>
+
+      {/* Footer */}
+      <footer className="w-full bg-primary-light text-white text-center shadow-md fixed bottom-0 left-0 z-50">
+        © {new Date().getFullYear()} Paisley's Highland Games
+      </footer>
+    </div>
   );
 }

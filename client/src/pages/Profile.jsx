@@ -25,7 +25,7 @@ export default function Profile() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full bg-primary text-white center-center py-2 mt-10">
+       <footer className="w-full bg-primary-light text-white text-center  shadow-md fixed bottom-0 left-0 z-50">
         © {new Date().getFullYear()} Paisley's Highland Games
       </footer>
     </div>

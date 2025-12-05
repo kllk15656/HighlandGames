@@ -1,45 +1,33 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import Navbar from "../components/Navbar";
 
-export default function Navbar({ onLogout }) {
-  const token = localStorage.getItem("token");
-  const isLoggedIn = !!token;
-
-  // Default logout (used if parent does not pass onLogout)
+export default function Profile() {
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    window.location.href = "/login";
+    localStorage.removeItem("token"); 
+    window.location.href = "/login"; 
   };
 
   return (
-    <nav className="w-full bg-gold px-6 py-3 shadow-md flex justify-between items-center">
-      <Link to="/" className="text-primary font-bold text-lg">
-        Paisley's Highland Games
-      </Link>
+    <div className="w-full min-h-screen bg-gold/10">
+      {/* Header + Navbar */}
+      <Header />
+      <Navbar onLogout={handleLogout} />
 
-      <div className="flex items-center space-x-4">
-        <Link to="/" className="hover:underline">Home</Link>
-        <Link to="/tickets" className="hover:underline">Tickets</Link>
-        <Link to="/events" className="hover:underline">Events</Link>
-        <Link to="/leaderboard" className="hover:underline">Leaderboard</Link>
-        <Link to="/contact" className="hover:underline">Contact</Link>
+      {/* Main Profile Container */}
+      <main className="max-w-md mx-auto text-center mt-24 bg-primary-light p-6 rounded-xl shadow-lg">
+        
+        <h1 className="text-2xl font-bold text-black mb-6">Profile</h1>
 
-        {!isLoggedIn ? (
-          <Link
-            to="/login"
-            className="text-black font-semibold hover:underline"
-          >
-            Login
-          </Link>
-        ) : (
-          <button
-            onClick={onLogout || handleLogout}
-            className="bg-accent-red text-white px-3 py-1 rounded-md hover:bg-red-600"
-          >
-            Log out
-          </button>
-        )}
-      </div>
-    </nav>
+        <div className="bg-primary text-white px-6 py-12 rounded-xl shadow text-sm">
+          Welcome to your profile page
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="w-full bg-primary text-white center-center py-2 mt-10">
+        © {new Date().getFullYear()} Paisley's Highland Games
+      </footer>
+    </div>
   );
 }

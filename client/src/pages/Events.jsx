@@ -41,7 +41,7 @@ export default function Event() {
             <div className="mt-4 flex gap-4">
               <a
                 href="/signup"
-                className="bg-accent text-gold px-4 py-2 rounded-lg hover:bg-red-700"
+                className=" text-white bg-gold px-4 py-2 rounded-lg hover:bg-red-700"
               >
                 Sign Up
               </a>
@@ -60,7 +60,7 @@ export default function Event() {
             <div className="mt-4 flex gap-4">
               <a
                 href="/signup"
-                className="bg-accent text-gold px-4 py-2 rounded-lg hover:bg-red-700"
+                className="bg-gold text-white px-4 py-2 rounded-lg hover:bg-red-700"
               >
                 Sign Up
               </a>
@@ -98,7 +98,7 @@ export default function Event() {
             <div className="mt-4 flex gap-4">
               <a
                 href="/signup"
-                className="bg-accent text-gold px-4 py-2 rounded-lg hover:bg-red-700"
+                className="bg-bg-gold text-white px-4 py-2 rounded-lg hover:bg-red-700"
               >
                 Sign Up
               </a>

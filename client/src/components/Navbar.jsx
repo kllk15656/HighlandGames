@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import MobileMenu from './MobileMenu';
-import { useLocation } from 'react-router-dom'; // If using React Router
+import { useLocation } from 'react-router-dom';
 
-export default function Navbar() {
+export default function Navbar({ onLogout }) {
   const [open, setOpen] = useState(false);
-  const location = useLocation(); // gets current path
+  const location = useLocation();
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -12,22 +12,27 @@ export default function Navbar() {
     { name: 'Events', path: '/events' },
     { name: 'Leaderboard', path: '/leaderboard' },
     { name: 'Contact', path: '/contact' },
-    { name: 'Login', path: '/login' },
   ];
+
+  // Add Login link only if NOT logged in (no onLogout prop)
+  if (!onLogout) {
+    navLinks.push({ name: 'Login', path: '/login' });
+  }
 
   return (
     <nav className="w-full shadow-md fixed top-0 left-0 z-50 bg-gold">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-        
-        {/* Logo / Title */}
-        <div className="text-2xl font-extrabold tracking-wide text-accent text-primary-light">
+
+        {/* Logo */}
+        <div className="text-2xl font-extrabold tracking-wide text-primary-light">
           Paisley's Highland Games
         </div>
 
         {/* Desktop navigation */}
-        <div className="hidden md:flex space-x-8 text-lg font-medium">
+        <div className="hidden md:flex space-x-8 text-lg font-medium items-center">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path;
+
             return (
               <a
                 key={link.name}
@@ -42,6 +47,16 @@ export default function Navbar() {
               </a>
             );
           })}
+
+          {/* LOGOUT BUTTON (only if prop exists) */}
+          {onLogout && (
+            <button
+              onClick={onLogout}
+              className="ml-4 px-4 py-1 text-black font-semibold bg-cream rounded hover:bg-accent transition"
+            >
+              Log out
+            </button>
+          )}
         </div>
 
         {/* Mobile hamburger */}
@@ -57,7 +72,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile dropdown */}
-      <MobileMenu open={open} />
+      <MobileMenu open={open} onLogout={onLogout} />
     </nav>
   );
 }

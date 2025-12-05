@@ -79,7 +79,7 @@ export default function Event() {
             <div className="mt-4 flex gap-4">
               <a
                 href="/signup"
-                className="bg-accent text-gold px-4 py-2 rounded-lg hover:bg-red-700"
+                className="bg-gold text-white px-4 py-2 rounded-lg hover:bg-red-700"
               >
                 Sign Up
               </a>
@@ -111,7 +111,7 @@ export default function Event() {
         <div className="text-center mt-6">
           <a
             href="/signup"
-            className="bg-primary text-white px-6 py-3 rounded-xl text-lg font-semibold shadow hover:bg-orange-800"
+            className="bg-gold text-white px-6 py-3 rounded-xl text-lg font-semibold shadow hover:bg-orange-800"
           >
             Register for Multiple Events
           </a>

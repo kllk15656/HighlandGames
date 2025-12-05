@@ -61,6 +61,7 @@ export default function Tickets() {
           </div>
 
         </div>
+        {/* Extra Info */} <div className="bg-primary rounded-xl shadow-lg p-6 mt-10 text-center"> <h2 className="text-xl font-bold text-accent text-cream ">Additional Information</h2> <p className="text-cream mt-3"> All tickets allow full-day access to the Paisley Highland Games, including events, vendors, and live entertainment. Tickets can be shown digitally on your phone. </p> </div>
       </main>
 
       <footer className="w-full bg-primary text-white text-center py-2 fixed bottom-0">

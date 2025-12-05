@@ -18,44 +18,61 @@ export default function Tickets() {
         {/* Ticket Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-          {/* Ticket 1 */}
+          {/* Adult Ticket */}
           <div className="bg-primary rounded-xl shadow-lg p-6 flex flex-col items-center text-center">
             <h2 className="text-xl font-bold text-gold">Adult Ticket</h2>
-            <p className="text-cream mt-2 ">Ages 16+</p>
-            <p className="text-3xl font-bold  mt-4 text-gold">£12</p>
+            <p className="text-cream mt-2">Ages 16+</p>
+            <p className="text-3xl font-bold mt-4 text-gold">£12</p>
 
-            <button className="mt-6 px-5 py-2 rounded-lg bg-accent text-white hover:bg-accent-red bg-gold">
+            <a
+              href="https://www.eventbrite.com" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 px-5 py-2 rounded-lg bg-gold text-black font-semibold hover:bg-accent-red transition"
+            >
               Buy Ticket
-            </button>
+            </a>
           </div>
 
-          {/* Ticket 2 */}
+          {/* Child Ticket */}
           <div className="bg-primary rounded-xl shadow-lg p-6 flex flex-col items-center text-center">
             <h2 className="text-xl font-bold text-gold">Child Ticket</h2>
             <p className="text-cream mt-2">Ages 5–15</p>
-            <p className="text-3xl font-bold  mt-4 text-gold">£6</p>
+            <p className="text-3xl font-bold mt-4 text-gold">£6</p>
 
-            <button className="mt-6 px-5 py-2 rounded-lg bg-accent text-white hover:bg-accent-red bg-gold">
+            <a
+              href="https://www.eventbrite.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 px-5 py-2 rounded-lg bg-gold text-black font-semibold hover:bg-accent-red transition"
+            >
               Buy Ticket
-            </button>
+            </a>
           </div>
 
-          {/* Ticket 3 */}
+          {/* Family Pass */}
           <div className="bg-primary rounded-xl shadow-lg p-6 flex flex-col items-center text-center">
             <h2 className="text-xl font-bold text-gold">Family Pass</h2>
-            <p className="text-cream mt-2 ">2 adults + 2 children</p>
-            <p className="text-3xl font-bold text- mt-4 text-gold">£30</p>
+            <p className="text-cream mt-2">2 adults + 2 children</p>
+            <p className="text-3xl font-bold mt-4 text-gold">£30</p>
 
-            <button className="mt-6 px-5 py-2 rounded-lg bg-accent text-white hover:bg-accent-red bg-gold">
+            <a
+              href="https://www.eventbrite.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 px-5 py-2 rounded-lg bg-gold text-black font-semibold hover:bg-accent-red transition"
+            >
               Buy Ticket
-            </button>
+            </a>
           </div>
 
         </div>
 
         {/* Extra Info */}
         <div className="bg-primary rounded-xl shadow-lg p-6 mt-10 text-center">
-          <h2 className="text-xl font-bold text-accent text-cream ">Additional Information</h2>
+          <h2 className="text-xl font-bold text-accent text-cream">
+            Additional Information
+          </h2>
           <p className="text-cream mt-3">
             All tickets allow full-day access to the Paisley Highland Games,
             including events, vendors, and live entertainment.
@@ -65,10 +82,9 @@ export default function Tickets() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full bg-primary-light text-white text-center  shadow-md fixed bottom-0 left-0 z-50">
+      <footer className="w-full bg-primary-light text-white text-center shadow-md fixed bottom-0 left-0 z-50">
         © {new Date().getFullYear()} Paisley's Highland Games
       </footer>
     </div>
   );
 }
-
